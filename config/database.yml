@@ -1,0 +1,12 @@
+development:
+  adapter: postgresql
+  host: localhost
+  username: postgres
+  password: Forward_55
+  database: railstest
+production:
+  adapter: postgresql
+  host: localhost
+  username: nstkbckdiaiwfx
+  password: KGTf7y2cPJ5id4HrJfvaGyR7sz
+  database: daclkl81u99ttl

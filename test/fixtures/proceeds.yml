@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider_id: 
+  amount: 9.99
+
+two:
+  provider_id: 
+  amount: 9.99
