@@ -1,0 +1,28 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">View/Edit Funds</h1>
+	</div>
+	<% if (@fund == nil || @fund.avail_amount == nil) %>
+	<div class="mainContentPrepare">
+		<div class="signUpBlockDiv">
+			<div class="signUpInputDiv label">
+				You have not yet submitted any funds
+			</div>
+		</div>
+	</div>
+	<div class="mainContentPrepare">
+		<div class="signUpBlockDiv">
+			<div class="signUpInputDiv label">
+				<%= link_to new_fund_path do %>
+				<div class="gridLinkBox">
+					Add Funds
+				</div>
+				<%end%>
+			</div>
+		</div>
+	</div>
+	<%else%>
+		<%= render partial: 'layouts/funds/funds_index'%>
+	<%end%>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="mainContent">
+	<div>
+		<br />
+		<h1 class="label">Sessions</h1>
+	</div>
+	<% @client_receipts.each do |client_receipt| %>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= link_to client_receipt do %>
+			<div class="paymentButton">
+				View Session Receipt
+			</div>
+			<%end%>			
+		</div>
+		<div class="signUpLabelDiv">
+			<%= link_to session_transcript_path(id: client_receipt.id) do %>
+			<div class="paymentButton">
+				View Session Transcript
+			</div>
+			<%end%>			
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">			
+			Session on <%= client_receipt.created_at.in_time_zone('EST').to_formatted_s(:long_ordinal_meridian) %> EST with <%= client_receipt.provider.first_name + " " + client_receipt.provider.last_name %>
+		</div>
+	</div>
+	<% end %>
+	<%= will_paginate @client_receipts%>
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+
+		</div>
+	</div>
+</div>
+

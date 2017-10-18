@@ -1,0 +1,309 @@
+$theme-background: #444444;
+$theme-background-gradient: #888888;
+$theme-forecolor: #00A2E8;
+$grid-label-forecolor: #FFFF00;
+$no-text-decoration: none;
+
+$text-shadow: 1px 8px 8px rgba(0,0,0,0.5);
+$text-shadow-hover: 1px 1px 8px rgba(33,33,33,1.0);
+$theme-gradient: #EEEEAA;
+$theme-box-background: #00A2E8;
+$theme-box-background-gradient: #444444;
+$theme-ratings-background: #FF8800;
+$theme-ratings-background-gradient: #444444;
+$theme-rate-background: #00FF00;
+$theme-rate-background-gradient: #444444;
+$theme-link-background: #888888;
+$theme-link-background-gradient: #444444;
+$font-stack:  Segoe UI, sans-serif;
+
+.providerGrid
+{padding-top:20px;
+}
+
+.providerRow
+{
+  margin-top:20px;
+  box-shadow:1px 1px 8px rgba(33, 33, 33, 0.9);
+  border-top-left-radius:15px;
+  border-top-right-radius:15px;
+  border-bottom-right-radius:15px;  
+  width:885px;  
+}
+
+.providerHeaderRow
+{
+  border:solid #FFFF00 1px;
+  border-top-left-radius:15px;
+  border-top-right-radius:15px;  
+  background-color: $theme-background-gradient;
+  padding-left:15px;
+  height:35px;
+}
+
+.providerInfoRow
+{
+  border:solid #FFFF00 1px;
+  border-bottom-right-radius:15px; 
+   background-color: $theme-background;
+   height:165px;
+}
+
+.commentInfoRow {
+  border:solid #FFFF00 1px;
+  border-bottom-right-radius:15px; 
+   background-color: $theme-background;
+}
+
+.commentHeader
+{
+  padding-top:7px;
+  padding-bottom:7px;
+  font-weight:bold;
+  overflow:hidden;
+}
+
+.commentHeaderRow
+{
+  //
+  background-color: #666666
+}
+.providerInfo {
+  padding-top:5px;
+  float:left;
+  padding-left:15px;
+  max-width:800px;
+  min-width:500px;
+  height:100px;
+  
+}
+
+.summaryBox
+{
+  width:500px;
+  float:left;
+  height:100px;
+}
+
+.providerImage
+{
+  float:left;
+  width:75px;
+  height:95px;
+  margin-left:5px;
+  margin-top:35px;
+  margin-bottom:0px;
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.rateLabel{  
+  color: $theme-forecolor;
+  text-decoration: $no-text-decoration;
+  text-shadow:$text-shadow;
+}
+
+.viewLink{
+  float:left;
+  padding:10px;
+}
+
+.ratings {
+  height:35px;
+  background-image: linear-gradient($theme-ratings-background, $theme-ratings-background-gradient);  
+  border-radius:5px;
+  border:solid 1px #FFFF00;
+  float:left;
+  padding:10px;
+  text-align:center;
+  width:256px;
+}
+
+.serviceBox
+{
+  background-image: linear-gradient($theme-box-background, $theme-box-background-gradient);  
+  border-radius:5px;
+  border:solid 1px #FFFF00;
+  float:left;
+  width:50px;
+  text-align:center;
+  height:25px;
+  padding:5px;
+}
+
+.rateBox
+{
+  background-image: linear-gradient($theme-rate-background, $theme-rate-background-gradient);  
+  border-radius:5px;
+  border:solid 1px #FFFF00;
+  float:left;
+  padding:10px;
+  text-align:center;
+}
+
+.gridLinkBox
+{
+  background-image: linear-gradient($theme-background, $theme-background-gradient, $theme-forecolor, $theme-gradient);
+  background-size: auto 300%;
+  background-position: 0 0; 
+  width: 150px;
+  font-size: 16px;
+  font-family: $font-stack;
+  color:#FFFF00;
+  border-radius: 5px;  
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);  
+  transition: all 0.5s;  
+  text-shadow:$text-shadow;
+  border:solid 1px #FFFF00;
+  float:left;
+  text-align:center;
+  padding:10px;  
+}
+
+.statusBox {
+  background-image: linear-gradient(#00FF00, #666666);
+  width: 120px;
+  font-size: 16px;
+  font-family: $font-stack;
+  color:#FFFF00;
+  border-radius: 5px;  
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);  
+  text-shadow:$text-shadow;
+  border:solid 1px #FFFF00;
+  float:left;
+  text-align:center;
+  padding:10px;  
+}
+
+.padToLinkBox
+{
+  padding-left:190px;
+}
+
+.padChatBox
+{
+  padding-left:65px;
+}
+
+.padEmailBox
+{
+  padding-left:120px;
+}
+
+.gridLinkBox:hover
+{
+  background-position: 0 100%;
+  box-shadow: 1px 1px 8px $theme-forecolor;
+  color:#000000;
+  cursor:pointer;
+  text-shadow:$text-shadow-hover;
+}
+
+.gridLinkBox:active
+{
+  position:relative;
+  top:1px;
+}
+
+.gridLabel
+{
+  color: $grid-label-forecolor;
+  text-shadow: $text-shadow;
+  margin:5px;
+}
+
+.infoBox {
+  float:left;
+}
+
+.avail
+{
+  padding-top:95px;
+  width:250px;
+}
+
+
+
+.rate
+{
+  padding-left:95px;
+  padding-top:110px;
+}
+
+/*********** single provider methods *************/
+.avail_singl
+{
+  padding-top:15px;
+}
+
+div.providerProfilePhoto
+{
+  margin-top:10px;
+}
+
+img.providerFullImage
+{
+  border-radius:15px;
+}
+
+div.providerPostInfo
+{
+  padding-left:15px;
+  float:left;
+  width:400px;
+  //height:170px;
+}
+
+div.column1 {
+  float:left;
+  width:150px;
+}
+
+div.column2 {
+  float:left;
+  width:500px;
+  
+}
+
+div.providerSchedAppt {
+  
+}
+
+div.gridLinkSchedBox {
+  width:120px;
+  font-size: 12px;
+  margin-top:10px;
+}
+
+div.verticalPad
+{
+  padding-top:10px;
+  height:10px;
+}
+
+div.providerRate {
+  padding-left:15px;
+  float:left;
+}
+
+div.providerProfileInfo
+{
+  float:left;
+  padding-left:15px;
+  width:670px;
+}
+
+div.providerInfoSingle
+{
+  //height:750px;
+}
+
+div.floatClear {
+  clear:both;
+}
+
+div.reviewPortion
+{
+  padding:15px;
+  padding-top:5px;
+}

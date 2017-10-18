@@ -1,0 +1,29 @@
+<div class="mainContentHeader">
+	<%= label_tag 'Forgot your password?', nil, class: 'label title_label' %>
+</div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= devise_error_messages! %>
+
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= f.label :email, "Email Address: ", {class: 'label'} %>
+		</div>
+
+		<div class="signUpInputDiv">
+			<%= f.email_field :email, {autofocus: true, class: 'text_field'} %>
+		</div>
+	</div>
+
+	<div class="signUpBlockDiv">
+		<div class="signButtonDiv resetPassDiv">
+			<%= f.submit "Send me reset password instructions", class: 'submit submitWidthOverride' %>
+		</div>
+	</div>
+	<div>
+		<%= render "devise/shared/links" %>
+	</div>
+	<% end %>
+
+</div>

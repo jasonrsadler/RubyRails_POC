@@ -1,0 +1,2 @@
+module SiteFundsHelper
+end

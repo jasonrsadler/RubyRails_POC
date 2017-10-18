@@ -1,0 +1,40 @@
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :address1, "*Address 1", {class: 'label'}%>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :address1, {class: 'text_field'}%>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :address2, "Address 2", {class: 'label'}%>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :address2, {class: 'text_field'}%>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :city, "*City", {class: 'label'}%>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :city, {class: 'text_field'}%>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :state, "*State", {class: 'label'}%>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.select(:state, options_for_select(us_states, selected: f.object.state),{}, {class: 'combo_box'}) %>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :zip, "*Zip Code", {class: 'label'}%>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :zip, {class: 'text_field'}%>
+	</div>
+</div>

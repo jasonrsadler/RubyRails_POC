@@ -1,0 +1,55 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Session Receipt</h1>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Client:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @client_receipt.client.first_name + " " + @client_receipt.client.last_name %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Provider:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @client_receipt.provider.first_name + " " + @client_receipt.provider.last_name %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Session Duration:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @client_receipt.session_duration %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Session Start Time:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @client_receipt.counseling_session.started_at.in_time_zone('EST').to_formatted_s(:long_ordinal_meridian)%> EST
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Session End Time:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @client_receipt.counseling_session.ended_at.in_time_zone('EST').to_formatted_s(:long_ordinal_meridian) %> EST
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Total Cost For Session:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= number_to_currency(@client_receipt.counseling_session.total_amount) %> 
+		</div>
+	</div>
+</div>
+
+

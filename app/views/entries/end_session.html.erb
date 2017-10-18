@@ -1,0 +1,63 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Ending Session</h1>
+	</div>
+	<%= form_for @counseling_session, url: session_ended_path(counseling_session_id: @counseling_session.id), method: :post do |f| %>
+	<div class="signUpBlockDiv label">
+		The session has ended. Please fill in the amount of time spent with the client. The amount to be charged will be calculated based on the advertised rate when the session started.
+	</div>
+	<div class="mainContentPrepare">
+		<div class="signUpInputDiv">
+			<%= f.label :adv_amount, "Advertised Amount:", {class: 'label'} %>
+		</div>
+		<div class="signUpInputDiv label">
+			<%= f.label :adv_units, number_to_currency(@counseling_session.adv_amount) + " per " + @counseling_session.adv_units, {class: 'text_field'} %>
+		</div>
+		
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%= f.label :session_duration, "Session Duration:", {class: 'label'} %>
+		</div>
+		<div class="signUpInputDiv">
+			<%= f.label :session_duration, pluralize(@counseling_session.session_duration, "Minute"), {class: 'label'} %>
+		</div>
+	</div>
+
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%= f.label :total_amount, "Total Amount To Provider: ", {class: 'label'} %>
+			<%= f.label :total_amount, number_to_currency((@counseling_session.session_duration * @counseling_session.adv_amount) - ((@counseling_session.session_duration * @counseling_session.adv_amount)) * SITE_COMMISSION), {class: 'label'} %>
+		</div>
+	</div>
+	
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%= f.label :comm_amount, "Total Amount To " + APP_NAME + " Platform: ", {class: 'label'} %>
+			<%= f.label :comm_amount, number_to_currency(((@counseling_session.session_duration * @counseling_session.adv_amount)) * SITE_COMMISSION), {class: 'label'} %>
+		</div>
+	</div>
+
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%= f.check_box :alt_time_specified, {class: 'check_box', onchange: 'switchTimeModify(this)'}  %>
+			<%= f.label :alt_time_specified, "Modify Time Used", {class: 'check_box_label label'}%>
+		</div>
+	</div>
+	<div id="alt_time_div" style="display:none">
+		<div class="signUpBlockDiv">
+			<div class="signUpInputDiv">
+				<%= f.label :alt_time, "Amount of time to charge (if chat session, time cannot be increased)", {class: 'label'}  %>
+			</div>
+			<div class="signUpInputDiv">
+				<%= f.text_field :alt_time, {class: 'text_field'}%>
+			</div>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%= f.submit "Submit Charges", {class: 'submit override'}%>
+		</div>
+	</div>
+	<%end%>
+</div>

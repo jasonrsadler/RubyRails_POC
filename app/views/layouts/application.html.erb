@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DiGi</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<% if controller.controller_name == 'funds' && controller.action_name != 'index' && (controller.action_name == 'new' || controller.action_name == 'edit' || controller.action_name == 'update')%>
+			<%= render 'layouts/js/digi_stripe' %>
+		<%else%>
+			<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%end%>
+		<% if controller.controller_name == 'counseling_sessions' && controller.action_name == 'show'%>
+			<%= render 'layouts/js/coun_sess_callback'%>
+		<%end%>
+		<% if controller.controller_name == 'entries' && controller.action_name == 'index'%>
+			<%= render 'layouts/js/entries_callback'%>
+		<%end%>
+		<% if current_provider && !(controller.controller_name == 'entries' && controller.action_name == 'index') %>
+			<%= render 'layouts/js/poll_alerts' %>
+		<%end%>
+		
+		<%= csrf_meta_tags %>
+
+	</head>
+	<body class="header">
+		<%= render 'layouts/header' %>
+		<div class="container">
+			<div>
+				<%= yield %>
+			</div>
+			<%= render 'layouts/disclaimer'%>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Session Now In Progress</h1>
+	</div>
+	<div class="talkBox">
+		<div class="talkContent">
+			<%= render partial: 'layouts/entry_layouts/talk_content'%>
+			
+		</div>
+		<div class="talkInput">
+			<div class="talkInputTextArea">
+			<%= text_area_tag :entry_text, nil, { class: 'input_text_field', onkeyup: 'textChanged(event)'}%>
+			</div>
+			<div class="talkInputButtonArea">
+			<%= button_tag :Send, {class: 'submission', onclick: 'sendMessage()'}%>
+			</div>
+			<% if current_provider %>
+			<%= link_to end_session_path(counseling_session_id: @counseling_session.id), method: :post, data: {confirm: "This will end the session"} do %><div class="gridLinkSchedBox gridLinkBox">End Session</div><%end%>
+			<%end%>
+			<div class="talkInputMessagesArea">
+				<%= label_tag :errors, "", {class: 'errors', id: 'error-messages'} %>
+			</div>			
+		</div>
+	</div>
+</div>

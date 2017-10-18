@@ -1,0 +1,4 @@
+$('.talkContent').html("<%= escape_javascript(render 'layouts/entry_layouts/talk_content', entries: @entries)%>");
+$("textarea[name='entry_text']").prop("disabled", false);
+$(".submission").prop("disabled", true);
+scroll();

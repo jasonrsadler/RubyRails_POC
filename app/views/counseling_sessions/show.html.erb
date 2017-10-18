@@ -1,0 +1,28 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Counseling Session Created</h1>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<h3 class="label">We have sent a notice to the provider to join and start the session.</h3>
+			<h4 class="label">Once the provider has joined, you may start the session.</h4>
+			<h4 class="label">No funds are used until the session starts.</h4>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<div id="session_timer" style="visibility: hidden; position:absolute"></div>
+			<div id="session_start" style="visibility: hidden">
+				<%= form_for @counseling_session do |f| %>
+					<%= f.hidden_field :client %>
+					<%= f.hidden_field :provider %>
+					<%= f.submit 'Start Session', {class: 'submit submitWidthOverride'}%>
+				<%end%>
+			</div>
+			<div id="session_wait">
+				<%= button_tag 'Waiting For Provider...', { class: 'submit submitWidthOverride', disabled: 'disabled'} %>
+			</div>
+		</div>
+	</div>
+
+</div>

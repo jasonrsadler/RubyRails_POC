@@ -1,0 +1,43 @@
+// Place all the styles related to the payments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$theme-background: #444444;
+$theme-background-gradient: #888888;
+$theme-forecolor: #00A2E8;
+$theme-gradient: #EEEEAA;
+$text-shadow: 1px 8px 8px rgba(0,0,0,0.5);
+$text-shadow-hover: 1px 1px 8px rgba(33,33,33,1.0);
+$font-stack:  Segoe UI, sans-serif;
+.paymentButton
+{
+  background-image: linear-gradient($theme-background, $theme-background-gradient, $theme-forecolor, $theme-gradient);
+  background-size: auto 300%;
+  background-position: 0 0; 
+  width: 125px;
+  font-size: 12px;
+  font-family: $font-stack;
+  color:#FFFF00;
+  border-radius: 5px;  
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);  
+  transition: all 0.5s;  
+  text-shadow:$text-shadow;
+  border:solid 1px #FFFF00;
+  float:left;
+  text-align:center;
+  padding:5px;  
+}
+
+.paymentButton:hover
+{
+  background-position: 0 100%;
+  box-shadow: 1px 1px 8px $theme-forecolor;
+  color:#000000;
+  cursor:pointer;
+  text-shadow:$text-shadow-hover;
+}
+
+.paymentButton:active
+{
+  position:relative;
+  top:1px;
+}

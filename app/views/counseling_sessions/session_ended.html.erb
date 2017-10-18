@@ -1,0 +1,17 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Charges Settled</h1>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="label">
+			<div class="signUpBlockDiv">
+				<div class="signUpInputDiv label">
+					Charges have been settled for this session.
+				</div>
+				<div class="signUpInputDiv label">
+					Your funds have been credited in the amount of <%= number_to_currency(@counseling_session.total_amount - (@counseling_session.total_amount * SITE_COMMISSION)) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

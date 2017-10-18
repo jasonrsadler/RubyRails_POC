@@ -1,0 +1,41 @@
+<% if !@fund.new_record?%>
+<div class="radioDiv">
+	<%= f.radio_button :method_of_payment, 'new', {class: 'radio', id: 'c1', autocomplete: 'off', onchange: 'switchSelector(this)'}%>
+	<label for="c1"><span></span></label>
+</div>
+<div class="signUpInputDiv signUpLabelDiv label">
+	Provide a new card
+</div>
+<%end%>
+<div id="use_new">
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= label_tag :card_number, "Credit Card Number", {class: 'label'} %>
+		</div>
+		<div class="signUpInputDiv">
+			<%= text_field_tag :card_number, nil, {name: nil, class: 'text_field', autocomplete: "off"} %><p>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= label_tag :card_code, "Security Code on Card (CVV)", {class: 'label'} %>
+		</div>
+		<div class="signUpInputDiv">
+			<%= text_field_tag :card_code, nil, {value: '234', name: nil, class: 'text_field', autocomplete: "off"} %>
+		</div>
+	</div>
+
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= label_tag :card_month, "Card Expiration", {class: 'label'} %>
+		</div>
+		<div class="signUpInputDiv">
+
+			<%= select_month nil, {add_month_numbers: true}, {value: 8, name: nil, id: "card_month", class: 'combo_box'} %>
+		</div>
+		<div class="signUpInputDiv">
+
+			<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: 'combo_box'} %>
+		</div>
+	</div>
+</div>

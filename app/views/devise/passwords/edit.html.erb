@@ -1,0 +1,39 @@
+<div class="mainContent">
+	<div class="mainContentHeader">
+		Change your password
+	</div>
+
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+	<div class="mainContentPrepare">
+		<div class="label">
+			<%= devise_error_messages! %>
+		</div>
+		<%= f.hidden_field :reset_password_token %>
+
+		<div class="signUpBlockDiv">
+			<div class="signUpLabelDiv">
+				<%= f.label :password, "New password:", class: 'label' %>
+			</div>
+			<div class="signUpInputDiv">
+				<%= f.password_field :password, { autofocus: true, autocomplete: "off", class: 'text_field'} %>
+			</div>
+		</div>
+		<div class="signUpBlockDiv">
+			<div class="signUpLabelDiv">
+				<%= f.label :password_confirmation, "Confirm new password", class: 'label' %>
+			</div>
+			<div class="signUpInputDiv">
+				<%= f.password_field :password_confirmation, { autocomplete: "off", class: 'text_field' } %>
+			</div>
+		</div>
+
+		<div class="signUpBlockDiv">
+			<div class="signButtonDiv">
+				<%= f.submit "Change my password", class: 'submit override' %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+</div>

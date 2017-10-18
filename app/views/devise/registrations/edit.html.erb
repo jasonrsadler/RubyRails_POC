@@ -1,0 +1,17 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Edit <%= resource_name.capitalize %></h1>
+	</div>
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+	<div class="mainContentPrepare">
+		<%= render partial: 'layouts/personal_info', locals: {f: f} %>
+		<%= render partial: 'layouts/security_info', locals: {f: f}%>
+
+		<% if @provider %>			 
+		<%= render partial: 'layouts/provider_profile_addend', locals: {f: f}%>
+		<% end %>
+		<%= render partial: 'layouts/submit', locals: {f: f}%>
+	</div>
+	<% end %>
+	<%= render 'layouts/account_cancel' %>
+</div>

@@ -1,0 +1,491 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font-size: 36px;
+$text-shadow: 1px 8px 8px rgba(0,0,0,0.5);
+$text-shadow-hover: 1px 1px 8px rgba(33,33,33,1.0);
+$footer-height:90px;
+
+$theme-forecolor: #DDDD00;
+$theme-gradient: #EEEEAA;
+$theme-background: #333333;
+$theme-background-gradient: #666666;
+
+.titleDiv{
+  margin-top:20px;
+  font-size: $font-size;
+  text-shadow: $text-shadow;
+  color:$theme-forecolor;  
+  padding-left:100px;
+}
+
+div.mainContentHeader {
+  margin-top:20px;
+  margin-left:25%;
+  font-size:24pt;
+  color:$theme-forecolor;
+  text-shadow:$text-shadow-hover;
+}
+
+div.mainContent {
+  width:70%; 
+  margin-left:15%; 
+  margin-top:10px;
+  padding-bottom:$footer-height;
+  
+}
+
+div.mainContentRegis {
+  width:90%; 
+  margin-left:5%; 
+  margin-top:10px;
+  padding-bottom:$footer-height;
+}
+
+
+.sloganDiv{
+  padding-left:200px;
+  color:$theme-forecolor;  
+  font-size: $font-size;
+  text-shadow: $text-shadow;
+}
+
+.label {
+  color: $theme-forecolor;
+  text-shadow: $text-shadow;
+}
+
+.boldLabel {
+  color: $theme-forecolor;
+  text-shadow: $text-shadow;
+  font-weight:bold;
+}
+
+.title_label {
+  font-size: 24pt;
+}
+
+.footer {
+  font-size:10pt;
+  position:absolute;
+  bottom:0;
+  height:$footer-height;
+}
+
+.footerContent {
+  width:70%; 
+  margin-left:15%; 
+  margin-top:10px;
+}
+
+.footerLinkHolder{
+  margin-top:15px;
+}
+
+.footerLinks {
+  float:left;
+  margin-left:100px;
+}
+
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$font-stack:  Segoe UI, sans-serif;
+$no-text-decoration: none;
+$body-margins: 0px;
+$border-top-left: 1px solid #EEEEEF;
+
+$theme-forecolor: #DDDD00;
+$theme-gradient: #EEEEAA;
+$theme-background: #333333;
+$theme-background-gradient: #666666;
+$theme-textbox-gradient: #777777;
+$text-shadow: 1px 8px 8px rgba(0,0,0,0.5);
+$text-shadow-hover: 1px 1px 8px rgba(33,33,33,1.0);
+a:link {
+  color: $theme-forecolor;
+  text-decoration: $no-text-decoration;
+  text-shadow:$text-shadow;
+}
+
+a:visited {
+  color: $theme-forecolor;
+  text-decoration: $no-text-decoration;
+  text-shadow:$text-shadow-hover;
+}
+
+a:hover {
+  color: $theme-gradient;
+  text-decoration: $no-text-decoration;
+}
+
+body.header
+{
+  margin-top:0px;
+  margin-left:0px;
+  margin-bottom:0px;
+}
+div{
+  font-family: $font-stack;    
+}
+
+div.header {
+  background-color: $theme-background;  
+  width:100%;
+  height:110px;
+  float:left;
+}
+
+div.actionBar {
+  background-image: linear-gradient($theme-background, $theme-background-gradient);  
+  border: 1px solid $theme-background;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family: $font-stack;
+  color: $theme-forecolor;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: bold;
+  float:right;
+  margin-right:100px;
+  padding: 5px;
+  min-width:300px;
+  min-height:200px;
+  transition: all 0.5s;
+  position:relative;
+  top: -185px;
+  box-shadow:1px 1px 8px rgba(33, 33, 33, 0.9);
+}
+
+div.actionBarLine {
+  float:right;
+  position:relative;
+}
+
+div.actionDivStatus {
+  position:absolute;
+  bottom:0;
+  padding-bottom:5px;
+  text-shadow:$text-shadow;
+}
+
+div.actionBar:hover{
+  top:0px;
+}
+
+div.innerHeader{
+  float:left;
+}
+
+div.PostHeader{
+  z-index:2;
+  min-height:30px;
+  background-image: linear-gradient($theme-background, $theme-background-gradient);
+  width:100%;
+  min-width: 1200px;
+  clear:both;
+}
+
+div.menu_item{
+  background-image: linear-gradient($theme-background, $theme-background-gradient, $theme-forecolor, $theme-gradient);
+  background-size: auto 300%;
+  background-position: 0 0;
+  font-size: 16px;
+  font-family: $font-stack;
+  color:$theme-forecolor;
+  transition: all 0.5s;  
+  height:30px;
+  width:155px;
+  float:left;  
+  text-align:center;
+  //box-shadow: 1px 1px 8px rgba(33, 33, 33, 0.5);
+  text-shadow: $text-shadow; 
+  border-radius:15px;
+}
+
+
+div.menu_item:hover{
+  background-position:0 100%;
+  color:$theme-background;
+  text-shadow: $text-shadow-hover;
+}
+
+span.vMiddle{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+span.header {
+  display:inline-block;
+  vertical-align:top;
+}
+
+div.DeviseStatusRed {
+  background-color:rgba(255,0,0,0.3);
+  text-align:center;
+  width:300px;
+  position:absolute;
+  left:500px;
+  height:60px;
+  border-radius: 5px;
+  border: 1px solid #FF0000;
+  
+}
+p.DeviseInnerStatusRed {
+  opacity:1.0;
+  color:#FF0000;
+}
+
+div.DeviseStatusGreen {
+  background-color:rgba(0,128,0,0.3);
+  text-align:center;
+  width:300px;
+  position:absolute;
+  left:500px;
+  height:60px;
+  border-radius: 5px dotted;
+  border: 1px dotted #00FF00;
+  
+}
+p.DeviseInnerStatusGreen {
+  opacity:1.0;
+  color:$theme-forecolor;
+  text-shadow:$text-shadow;
+}
+
+input.submit, button.submit {
+  background-image: linear-gradient($theme-background, $theme-background-gradient, $theme-forecolor, $theme-gradient);
+  background-size: auto 300%;
+  background-position: 0 0; 
+  height: 30px;
+  width: 115px;
+  font-size: 16px;
+  font-family: $font-stack;
+  color:$theme-forecolor;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);  
+  transition: all 0.5s;  
+  text-shadow:$text-shadow;
+  border:0;
+}
+
+input.submit:disabled, button.submit:disabled
+{
+  background-image: linear-gradient(#000000, #c0c0c0);  
+  background-size:auto 100%;
+  color:#404040;
+  
+}
+
+input.submitWidthOverride, button.submitWidthOverride{
+  width:auto;
+}
+
+input.submit:hover:enabled, button.submit:hover:enabled {
+  background-position: 0 100%;
+  box-shadow: 1px 1px 8px $theme-forecolor;
+  color:$theme-background;
+  cursor:pointer;
+  text-shadow:$text-shadow-hover;
+}
+
+input.override {
+  width:200px;
+}
+
+
+input.submit:active:enabled, button.submit:active:enabled {
+  position:relative;
+  top:1px;
+}
+
+div.signUpBlockDiv 
+{
+  clear:both;
+  height:45px;
+}
+
+div.signInBlockDiv
+{
+  height:45px;
+}
+
+div.signInRememberDiv {
+  text-align:right; 
+  width:425px;
+  float:left;
+  height:25px;
+  padding-top:5px;
+}
+
+div.signUpLabelDiv  {
+  text-align:right; 
+  width:200px;
+  float:left;
+  height:25px;
+  padding-top:5px;
+}
+
+div.signUpInputDiv  {
+  width:auto;
+  float:left; 
+  padding-left:5px;
+}
+
+div.signUpMemoDiv  {
+  width:auto;
+  float:left; 
+  padding-left:5px;
+  height:175px;
+}
+
+div.signButtonDiv {
+  float:left;
+  text-align:right;
+  width:425px;
+}
+
+div.resetPassDiv {
+  padding-top:10px;
+  width:500px;
+}
+
+input.text_field{
+  background-image:linear-gradient($theme-background, $theme-textbox-gradient);
+  border-radius:10px;
+  border-color:$theme-background;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);
+  padding:5px;
+  height:25px;
+  color: $theme-forecolor; 
+  border:0;
+  font-family: $font-stack;
+  font-size:16px;
+  text-shadow:$text-shadow;
+}
+
+.memo_text_field {
+  background-image:linear-gradient($theme-background, $theme-textbox-gradient);
+  border-radius:10px;
+  border-color:$theme-background;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);
+  padding:5px;
+  height:150px;
+  color: $theme-forecolor; 
+  border:0;
+  font-family: $font-stack;
+  font-size:16px;
+  text-shadow:$text-shadow;
+  resize: none;
+  //overflow: scroll;
+}
+
+.combo_box {
+  background-image:linear-gradient($theme-background, $theme-textbox-gradient);
+  border-radius:10px;
+  border-color:$theme-background;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);
+  padding:5px;
+  height:35px;
+  color: $theme-forecolor; 
+  border:0;
+  font-family: $font-stack;
+  font-size:16px;
+  text-shadow:$text-shadow;
+  outline:none;
+}
+
+.combo_box:focus {
+  box-shadow: 0px 1px 8px $theme-forecolor;
+  border:0;
+}
+
+.combo_box option {
+  background-color:$theme-background;
+  border:none;
+  outline:none;
+}
+
+input.text_field:focus {
+  box-shadow: 0px 1px 8px $theme-forecolor;
+  border:0;
+}
+
+label.labelStyle {
+  color: linear-gradient($theme-forecolor, $theme-forecolor);
+text-shadow: 1px 1px 8px rgba(88,88,88,0.5);
+  
+}
+
+input[type=checkbox].check_box {
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height:1px; 
+  width:1px; 
+  margin:-1px; 
+  padding:0;
+  border:0;
+  font-family: $font-stack;
+  font-size:16px;
+}
+
+input[type=checkbox].check_box + label.check_box_label {
+  padding-left:20px;
+  height:15px; 
+  display:inline-block;
+  line-height:15px;
+  background-repeat:no-repeat;
+  background-position: 0 0;
+  font-size:15px;
+  vertical-align:middle;
+  cursor:pointer;
+  font-family: $font-stack;
+  font-size:16px;
+}
+
+input[type=checkbox].check_box:checked + label.check_box_label {
+  background-position: 0 -15px;
+}
+
+.check_box_label{ 
+  background-image:image-url("dark-check-orange.png"); 
+  color:$theme-forecolor;
+  font-family: $font-stack;
+  font-size:16px;
+  text-shadow:$text-shadow;
+}
+
+div.mainContentPrepare {
+  width:100%; 
+  padding-top:15px
+}
+
+.status_combo_box {
+  background-image:linear-gradient($theme-background, $theme-textbox-gradient);
+  border-radius:10px;
+  border-color:$theme-background;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);
+  padding-left:5px;
+  //height:35px;
+  color: $theme-forecolor; 
+  border:0;
+  font-family: $font-stack;
+  font-size:12px;
+  text-shadow:$text-shadow;
+  outline:none;
+  font-weight:bold;
+}
+
+.status_combo_box:focus {
+  box-shadow: 0px 1px 8px $theme-forecolor;
+  border:0;
+}
+
+.status_combo_box option {
+  background-color:$theme-background;
+  border:none;
+  outline:none;
+}

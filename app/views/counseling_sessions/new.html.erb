@@ -1,0 +1,57 @@
+<div class="mainContent">
+	<div>
+		<br />
+		<h1 class="label">Starting Counseling Session</h1>
+	</div>
+	<%= form_for(@counseling_session) do |f|%>
+	<% if @counseling_session.errors.any? %>
+	<div id="stripe_error" class="label">
+		<h2><%= pluralize(@counseling_session.errors.count, "error") %> prohibited
+		this session from being started:</h2>
+		<ul>
+			<% @counseling_session.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<% if current_client %>
+		<% if @provider %>
+		<%= f.hidden_field :provider_id, value: @provider.id %>
+		<%= f.hidden_field :client_id, value: current_client.id %>
+		<%= f.hidden_field :session_type, value: @counseling_session.session_type %>
+		<%end%>
+	<%end%>
+	<div class="signUpBlockDiv">
+		<div class="label">
+			<div class="signUpBlockDiv">
+				<div class="signUpInputDiv label">
+					<%= f.check_box :terms_of_service, {class: 'check_box'}  %>
+					<% if current_client %>
+					<%= f.label :terms_of_service, "*By starting this session, you agree that you have read and that you will abide by the Client Terms of Service and Privacy Policy. Funds will be used for this session as specified in the Client Terms of Service.", {class: 'check_box_label label'}%>
+					<% elsif current_provider %>
+					<%= f.label :terms_of_service, "*By starting this session, you agree that you have read and that you will abide by the Provider Terms of Service and Privacy Policy. Commissions and any applicable fees pertaining to sessions will apply pursuant to the Provider Terms of Use.", {class: 'check_box_label label'}%>					
+					<%end%>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<% if current_client %>
+				<%= f.submit "Start Session", {class: 'submit'}%>
+			<% elsif current_provider %>
+				<%= f.submit "Join Session", {class: 'submit'} %>
+				
+			<%end%>
+		</div>
+	</div>
+
+	<%end%>
+	<br />
+	<%= link_to 'Back', counseling_sessions_path %>
+</div>

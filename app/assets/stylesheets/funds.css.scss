@@ -1,0 +1,26 @@
+// Place all the styles related to the funds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.radio {
+    display:none;
+}
+.radio + label span {
+    display:inline-block;
+    width:21px;
+    height:21px;
+    margin:-1px 0px 0 0;
+    vertical-align:middle;
+    background:url("radios.png") 0 top no-repeat;
+    cursor:pointer;
+}
+.radio:checked + label span {
+    background:url("radios.png") 0 -21px no-repeat;
+}
+
+.radioDiv{
+  float:left;
+  height:22px;
+  width:22px;
+  align:left;
+  margin-top:3px;
+}

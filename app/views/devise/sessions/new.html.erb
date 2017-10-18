@@ -1,0 +1,46 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label"><%= resource_name.capitalize %> Sign in</h1>
+	</div>
+
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	<div class="mainContentPrepare">
+		<div class="signUpBlockDiv">
+			<div class="signUpLabelDiv">
+				<%= f.label :email, {class: 'label'} %>
+			</div>
+			<div class="signUpInputDiv">
+				<%= f.email_field :email, {required: :true, title: "Email is required", class: 'text_field', autofocus: true }%>
+			</div>
+		</div>
+
+		<div class="signUpBlockDiv">
+			<div class="signUpLabelDiv">
+				<%= f.label :password, {class: 'label'} %>
+			</div>
+			<div class="signUpInputDiv">
+				<%= f.password_field :password, required: :true, message: "Password is required", autocomplete: "off", class: 'text_field' %>
+			</div>
+		</div>
+
+		<% if devise_mapping.rememberable? -%>
+		<div class="signUpBlockDiv">
+			<div class="signInRememberDiv">
+				<%= f.check_box :remember_me, {class: 'check_box'}  %>
+				<%= f.label :remember_me, {class: 'check_box_label label'}%>
+			</div>
+		</div>
+		<div>
+			<% end -%>
+
+			<div class="signUpBlockDiv">
+				<div class="signButtonDiv">
+					<%= f.submit "Sign in", {class: 'submit'} %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+</div>

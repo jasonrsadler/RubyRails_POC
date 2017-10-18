@@ -1,0 +1,44 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Provider Alerts</h1>
+	</div>
+	<div class="mainContentPrepare">
+		<div class="alertBox">
+			<div class="alertContent">
+
+				<% @counseling_session.entries.each_with_index do |entry, index| %>
+				<% if index % 2 == 0 %>
+				<div class='talkBoxRowStyle1 label'>
+					<%else%>
+					<div class='talkBoxRowStyle2 label'>
+						<%end%>
+						<% if entry.entry_by_client && current_client %>
+						<div class="client_by_client_narration">
+							You:
+						</div>
+						<div class="client_by_client_text">
+							<% elsif entry.entry_by_provider && current_client %>
+							<div class="client_by_provider_narration">
+								<%= entry.counseling_session.provider.first_name + " " + entry.counseling_session.provider.last_name + ":"%>
+							</div>
+							<div class="client_by_provider_text">
+								<% elsif entry.entry_by_client && current_provider %>
+								<div class="client_by_provider_narration">
+									<%= entry.counseling_session.client.first_name + " " + entry.counseling_session.client.last_name + ":" %>
+								</div>
+								<div class="client_by_provider_text">
+									<% elsif entry.entry_by_provider && current_provider %>
+									<div class="client_by_client_narration">
+										You:
+									</div>
+									<div class="client_by_client_text">
+										<%end%>
+										<%= label_tag entry.entry_text %>
+									</div>
+								</div>
+								<%end%>
+
+							</div>
+						</div>
+					</div>
+				</div>

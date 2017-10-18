@@ -1,0 +1,33 @@
+
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Add Funds</h1>
+	</div>
+	<div class="signUpBlockDiv">
+		<h3 class="label">*A valid credit card must be provided to add funds.</h3>
+	</div>
+	
+	<%= form_for @fund do |f| %>
+	<% if @fund.errors.any? %>
+	<div id="stripe-error" class="label">
+		<h2><%= pluralize(@fund.errors.count, "error") %> prohibited
+		this fund from being saved:</h2>
+		<ul>
+			<% @fund.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div id="stripe-error" class="label payment-errors">
+		
+	</div>
+	
+	
+	<div class="mainContentPrepare">
+		<%= render partial: 'layouts/add_fund', locals: {f: f} %>
+	</div>
+	<%end%>
+</div>

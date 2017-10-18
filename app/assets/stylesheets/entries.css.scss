@@ -1,0 +1,177 @@
+// Place all the styles related to the entries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$theme-background: #333333;
+$theme-textbox-gradient: #777777;
+$font-stack:  Segoe UI, sans-serif;
+$text-shadow: 1px 8px 8px rgba(0,0,0,0.5);
+$text-shadow-hover: 1px 1px 8px rgba(33,33,33,1.0);
+
+$theme-forecolor: #DDDD00;
+$theme-background-gradient: #666666;
+$theme-gradient: #EEEEAA;
+
+div.mainContentSession {
+  width:70%; 
+  margin-left:15%; 
+  top: -75px;
+  position:relative;
+}
+
+div.talkBox {
+  background-color: #333333;
+  height:450px;
+  width:100%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(33, 33, 33, 0.9);
+}
+
+div.talkContent {
+  height: 80%;
+  margin-left:5px;
+  overflow-y:scroll;
+}
+
+div.talkInput {
+  height: 20%;
+  background-color:#666666;
+  
+}
+
+div.talkBoxRowStyle1
+{
+  height: auto;
+  min-height: 25px;
+  overflow:hidden;
+  background-color:#333333;
+}
+
+div.talkBoxRowStyle2
+{
+  height: auto;
+  min-height: 25px;
+  overflow:hidden;
+  background-color:#444444;
+}
+
+
+.input_text_field {
+  background-image:linear-gradient($theme-background, $theme-background-gradient, $theme-forecolor, $theme-gradient);
+  border-radius:10px;
+  border-color:$theme-background;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);
+  color: $theme-forecolor; 
+  border:0;
+  font-family: $font-stack;
+  font-size:16px;
+  text-shadow:$text-shadow;
+  height: 75px;
+  width:450px;
+  resize: none;
+  background-size:auto 300%;
+  transition: all 0.5s;    
+}
+
+.input_text_field:disabled {
+  background-image: linear-gradient(#000000, #a0a0a0);  
+  background-size:auto 100%;
+  color:#404040;
+}
+
+.client_by_client_narration {
+  float:left;
+  width: 200px;
+  padding-left:5px;
+}
+
+.client_by_client_date {
+  float:left;
+  width: 135px;
+  padding-left:5px;
+}
+
+.client_by_provider_narration {
+  float:left;
+  width: 200px;
+  color: #FF8800;
+  padding-left:5px;
+}
+
+.client_by_client_delete
+{
+  float:left;
+  width: 75px;
+  padding-left:5px;
+}
+
+.client_by_client_text {
+  float:left;
+  width: 405px;
+}
+
+.client_by_provider_text {
+  color: #FF8800;
+  float:left;
+  width: 500px;
+  
+}
+
+.errors
+{
+  color:#FF7700;
+}
+
+.submission {
+  background-image: linear-gradient($theme-background, $theme-background-gradient, $theme-forecolor, $theme-gradient);
+  background-size: auto 300%;
+  background-position: 0 0; 
+  height: 75px;
+  width: 115px;
+  font-size: 16px;
+  font-family: $font-stack;
+  color:$theme-forecolor;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(33,33,33,0.9);  
+  transition: all 0.5s;  
+  text-shadow:$text-shadow;
+  border:0;
+}
+
+.submission:disabled
+{
+  background-image: linear-gradient(#000000, #a0a0a0);  
+  background-size:auto 100%;
+  color:#404040;
+  
+}
+
+
+.submission:hover:enabled {
+  background-position: 0 100%;
+  box-shadow: 1px 1px 8px $theme-forecolor;
+  color:$theme-background;
+  cursor:pointer;
+  text-shadow:$text-shadow-hover;
+}
+
+.submission:active:enabled {
+  position:relative;
+  top:1px;
+}
+
+.talkInputTextArea
+{
+  padding:5px;
+  float:left;
+}
+
+.talkInputButtonArea
+{
+  padding:5px;
+  float:left;
+}
+
+div.alt_time
+{
+  display:none;
+}
