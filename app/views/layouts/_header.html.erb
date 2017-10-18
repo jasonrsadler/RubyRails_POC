@@ -1,0 +1,138 @@
+<div class="header">
+	<div class="innerHeader">
+		<%= link_to image_tag('logo.png'), root_path%>
+	</div>
+	<%= render 'layouts/devise_status'%>
+	<% if client_signed_in? || provider_signed_in?%>
+	<% if current_client %>
+	<div class="actionBarLine">
+		<div class="actionBar">
+			<div>
+				<span><%= link_to destroy_client_session_path,
+					method: :delete do%>Sign Out<%end%> </span>
+			</div>
+			<div>
+				<span><%= link_to(edit_client_registration_path) do %>Edit Profile<%end%></span>
+			</div>
+			<% if client_signed_in? %>
+			<div>
+				<span><%= link_to(providers_path) do %>Find A Counselor<%end%></span>
+			</div>
+			<div>
+				<span><%= link_to(funds_path) do %>View Funds<%end%></span>
+			</div>
+			<div>
+				<span><%= link_to(funds_path) do %>Available Funds: <%= number_to_currency(get_funds) %><%end%></span>
+			</div>
+			<div>
+				<span><%= link_to(client_receipts_path) do %>Sessions<%end%></span>
+			</div>
+			<%end%>
+
+			<div class="actionDivStatus">
+				Client Signed in as: <%= current_client.first_name %> <%= current_client.last_name%>
+			</div>
+
+		</div>
+	</div>
+	<% elsif current_provider %>
+	<div class="actionBarLine">
+		<div class="actionBar">
+			<div>
+				<span><%= link_to destroy_provider_session_path,
+					method: :delete do%>Sign Out<%end%> </span>
+			</div>
+			<div>
+				<span><%= link_to(edit_provider_registration_path) do %>Edit Profile<%end%></span>
+			</div>
+			<div>
+				<% @provider = current_provider %>
+				<%= form_for @provider, as: @post, method: :patch do |p| %>
+				Status: <%= p.select(:status, options_for_select([['Offline',1], ['Available',2], ['Unavailable',3]], selected: p.object.status),{}, {onchange: 'this.form.submit()',  class: 'status_combo_box'}) %>
+				<%end%>
+			</div>
+			<div>
+				<span><%= link_to(provider_alerts_path) do %>Alerts<%end%></span>
+				<span class="alert_indicator"></span>
+			</div>
+			<div class="actionDivStatus">
+				<span class="label"> Provider Signed in as: <%= current_provider.first_name %> <%= current_provider.last_name%> </span>
+			</div>
+		</div>
+	</div>
+	<%end%>
+	<%end%>
+</div>
+
+<div class="PostHeader">
+	<% if client_signed_in? %>
+	<%= link_to destroy_client_session_path,
+	method: :delete do%>
+	<div class="menu_item">
+		<span class="vMiddle">Sign Out</span>
+	</div>
+	<%end%>
+	<%= link_to(providers_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Find A Counselor</span>
+	</div>
+	<%end%>
+	<%= link_to(edit_client_registration_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Edit Profile</span>
+	</div>
+	<%end%>
+	<%= link_to(funds_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">View/Edit Funds</span>
+	</div>
+	<%end%>
+	<%= link_to(client_receipts_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Sessions</span>
+	</div>
+	<%end%>
+	<% elsif provider_signed_in? %>
+	<%= link_to destroy_provider_session_path,
+	method: :delete do%>
+	<div class="menu_item">
+		<span class="vMiddle">Sign Out</span>
+	</div>
+	<%end%>
+	<%= link_to(edit_provider_registration_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Edit Profile</span>
+	</div>
+	<%end%>
+	<%= link_to(provider_alerts_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Alerts</span>
+		<span class="alert_indicator vMiddle"></span>
+	</div>
+	<%end%>
+	<% else  %>
+	<%= link_to(new_client_session_path) do%>
+	<div class="menu_item">
+		<span class="vMiddle">Client Sign In</span>
+	</div>
+	<%end%>
+	<%= link_to(new_client_registration_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Client Register</span>
+	</div>
+	<%end%>
+
+	<%= link_to(new_provider_session_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Provider Sign In</span>
+	</div>
+	<%end%>
+	<%= link_to(new_provider_registration_path) do %>
+	<div class="menu_item">
+		<span class="vMiddle">Provider Register</span>
+	</div>
+	<%end%>
+	<%end%>
+
+</div>
+

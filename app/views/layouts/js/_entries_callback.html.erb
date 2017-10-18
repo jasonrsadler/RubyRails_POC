@@ -1,0 +1,116 @@
+<script type="text/javascript">
+	(function() {
+		$(document).ready(function() {
+			if ($(".entry_text").val() == "" || $(".entry_text").val() == null) {
+				$(".submission").prop("disabled", true);
+			} else
+				$(".submission").prop("disabled", false);
+			setInterval((function() {
+						getMessage();
+					}), 3000);
+		});
+
+	}).call(this);
+
+	function textChanged(e) {
+		if (e.keyCode != 13) {
+			if ($("textarea[name='entry_text']").val() == "" || $("textarea[name='entry_text']").val() == null) {
+				$(".submission").prop("disabled", true);
+			} else {
+				$(".submission").prop("disabled", false);
+			}
+		} else {
+			$(".submission").click();
+			
+		}
+	}
+	
+	function getMessage()
+	{
+		var dataParams = {
+							'client_id': '<%= @counseling_session.client_id %>',
+						   'counseling_session_id': '<%= @counseling_session.id %>',
+						   'provider_id': '<%= @counseling_session.provider_id %>',						   	
+						};
+		$.ajax({
+			url: '<%= entry_get_path %>',
+			type: 'POST',
+			data: dataParams,
+			error: function() { handleGetError() }
+		});
+	}
+	
+	function sendMessage()
+	{
+		if ($("#entry_text").val() == '\n')
+		{
+			$("#entry_text").val("");
+			return;
+		}
+		$("textarea[name='entry_text']").prop("disabled", true);
+		$(".submission").prop("disabled", true);
+		var dataParams = { 'entry_text': $("#entry_text").val(), 
+						   'client_id': '<%= @counseling_session.client_id %>',
+						   'counseling_session_id': '<%= @counseling_session.id %>',
+						   'provider_id': '<%= @counseling_session.provider_id %>',
+						   <% if current_client %>
+						   'entry_by_client': 'true',
+						   'entry_by_provider': 'false'
+						   <%else%>
+						   'entry_by_client': 'false',
+						   'entry_by_provider': 'true' 
+						   <%end%>
+						 };
+		
+				$.ajax({
+    				url: '<%= entry_submit_path %>',
+    				type: 'POST',
+    				data: dataParams,
+    				error: function(){ handleError() }
+  				});
+		$("textarea[name='entry_text']").val("");
+		
+	}
+	
+	function scroll()
+	{
+		$('.talkContent').animate({scrollTop: $('.talkContent')[0].scrollHeight}, 500);
+	}
+	
+	function handleError()
+	{
+		$("#error-messages").text("There was an error sending the message. Please try again.");
+		$("textarea[name='entry_text']").prop("disabled", false);
+		$(".submission").prop("disabled", true);
+	}
+	function handleGetError()
+	
+	{
+		$("#error-messages").text("There was an error receiving a message. Please notify the other user to resend.");
+		<% if @counseling_session.session_ended %>
+		
+		<%end%>
+	}
+	
+	function showAlertCount(responseTxt)
+{
+	if (parseInt(responseTxt) == 0)
+	{
+		$(".alert_indicator").css("background-color", "transparent");
+		$(".alert_indicator").css("color", "transparent");
+		$(".alert_indicator").css("box-shadow", "none");
+		$(".alert_indicator").css("text-shadow", "none");
+	}
+	else
+	{
+		$(".alert_indicator").css("background-color", "#FF0000");
+		$(".alert_indicator").css("border-radius", "15px");
+		$(".alert_indicator").css("color", "#FFFFFF");
+		$(".alert_indicator").css("padding-left", "3px");
+		$(".alert_indicator").css("padding-right", "4px");
+		$(".alert_indicator").css("box-shadow", "1px 1px 8px rgba(33,33,33,0.9)");
+		$(".alert_indicator").css("text-shadow", "1px 8px 8px rgba(0,0,0,0.5)");
+	}
+}
+
+</script>

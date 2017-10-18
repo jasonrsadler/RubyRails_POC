@@ -1,0 +1,97 @@
+<div class="signUpInputDiv label">
+	<%= devise_error_messages! %>
+</div>
+<div class="signUpBlockDiv">
+
+	<h2 class="label">Personal Information</h2>
+</div>
+<% if provider_signed_in? %>
+<div class="label">
+	Addresses are used for billing purposes only.
+	<br/>
+	Phone Numbers are disclosed to clients only for providers that elect to provide phone services
+	<br/>
+	<br/>
+</div>
+<%else%>
+<div class="label">
+	Addresses and Phone Numbers are used for billing purposes only.
+	<br/>
+	ThisSite does not disclose client contact information to others.
+	<br/>
+	<br/>
+</div>
+<%end%>
+<% if resource.new_record? %>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :first_name, "*First Name:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :first_name, {class: 'text_field',autofocus: true}  %>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :last_name, "*Last Name:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :last_name, {class: 'text_field'}  %>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :birthdate, "*Birthdate:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.date_select :birthdate, {start_year: 1900, end_year: Date.today.year - 3, order: [:month, :day, :year], default: { year: 1975}}, {class: 'combo_box'} %>
+	</div>
+</div>
+<%else%>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :first_name, "Name:",{ class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv signUpLabelDiv">
+		<%= f.label :first_name, f.object.first_name + " " + f.object.last_name, {class: 'label'} %>
+	</div>
+</div>
+<%end%>
+
+
+<%= render partial: 'layouts/address/address', locals: {f: f}%>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :email, "*Email Address:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+
+		<%= f.email_field :email, {class: 'text_field'} %>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :phone, "*Phone Number:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+
+		<%= f.telephone_field :phone, { class: 'text_field'} %>
+	</div>
+</div>
+
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :alt_phone, "Alternate Number:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+
+		<%= f.telephone_field :alt_phone, { class: 'text_field'} %>
+	</div>
+</div>
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+	</div>
+</div>
+<% end %>

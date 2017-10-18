@@ -1,0 +1,45 @@
+<script type="text/javascript">
+//(function() {
+				//$(document).ready(function() {
+					//setInterval((function() {
+						//$(".alert_indicator").load('<%= get_alert_count_path %>', showAlertCount);
+					//}), 3000);
+				//});
+
+			//}).call(this);
+			
+function showAlertCount(responseTxt)
+{
+	if (parseInt(responseTxt) == 0)
+	{
+		$(".alert_indicator").css("background-color", "transparent");
+		$(".alert_indicator").css("color", "transparent");
+		$(".alert_indicator").css("box-shadow", "none");
+		$(".alert_indicator").css("text-shadow", "none");
+	}
+	else
+	{
+		$(".alert_indicator").css("background-color", "#FF0000");
+		$(".alert_indicator").css("border-radius", "15px");
+		$(".alert_indicator").css("color", "#FFFFFF");
+		$(".alert_indicator").css("padding-left", "3px");
+		$(".alert_indicator").css("padding-right", "4px");
+		$(".alert_indicator").css("box-shadow", "1px 1px 8px rgba(33,33,33,0.9)");
+		$(".alert_indicator").css("text-shadow", "1px 8px 8px rgba(0,0,0,0.5)");
+	}
+}
+
+<% if controller.action_name == 'end_session'%>
+function switchTimeModify(s)
+{
+	if (s.checked)
+	{
+		$("#alt_time_div").css("display", "block");
+	}
+	else
+	{
+		$("#alt_time_div").css("display", "none");
+	}
+}			
+<%end%>
+</script>

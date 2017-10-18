@@ -1,0 +1,22 @@
+<script type='text/javascript'>	
+		function providerJoinedResponse(responseTxt, statusTxt, xhr)
+		{
+			if (statusTxt == "success")
+			{
+				if (responseTxt == "true")
+				{
+					$("#session_wait").css("visibility", "hidden");
+					$("#session_start").css("visibility", "visible");
+				}
+			}
+			
+		}
+			(function() {
+				$(document).ready(function() {
+					setInterval((function() {
+						$("#session_timer").load('<%= provider_joined_path(@counseling_session) %>', providerJoinedResponse);
+					}), 3000);
+				});
+
+			}).call(this);
+		</script>

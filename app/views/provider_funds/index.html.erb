@@ -1,0 +1,23 @@
+<h1>Listing provider_funds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @provider_funds.each do |provider_fund| %>
+      <tr>
+        <td><%= link_to 'Show', provider_fund %></td>
+        <td><%= link_to 'Edit', edit_provider_fund_path(provider_fund) %></td>
+        <td><%= link_to 'Destroy', provider_fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Provider fund', new_provider_fund_path %>

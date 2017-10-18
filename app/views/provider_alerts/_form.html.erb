@@ -1,0 +1,29 @@
+<%= form_for(@provider_alert) do |f| %>
+  <% if @provider_alert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider_alert.errors.count, "error") %> prohibited this provider_alert from being saved:</h2>
+
+      <ul>
+      <% @provider_alert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :provider_id_id %><br>
+    <%= f.text_field :provider_id_id %>
+  </div>
+  <div class="field">
+    <%= f.label :client_id_id %><br>
+    <%= f.text_field :client_id_id %>
+  </div>
+  <div class="field">
+    <%= f.label :alert_text %><br>
+    <%= f.text_area :alert_text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

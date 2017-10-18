@@ -1,0 +1,49 @@
+<%= form_for(@fund) do |f| %>
+<div class="mainContentPrepare">
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<h3 class="label">Available Funds: <%= number_to_currency(@fund.avail_amount.to_d / 100) %></h3>
+		</div>
+	</div>
+</div>
+<div class="mainContentPrepare">
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">
+			Total of Funds Used:
+		</div>
+
+	</div>
+</div>
+<div class="mainContentPrepare">
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%if @fund%>
+			<%= link_to edit_fund_path(@fund) do %>
+			<div class="gridLinkBox">
+				Add Funds
+			</div>
+			<%end%>
+			<%else%>
+			<%= link_to new_fund_path do %>
+			<div class="gridLinkBox">
+				Add Funds
+			</div>
+			<%end%>
+			<%end%>
+		</div>
+	</div>
+</div>
+<%if @fund%>
+<div class="mainContentPrepare">
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+			<%= link_to payments_path do %>
+			<div class="gridLinkBox">
+				View Payments
+			</div>
+			<%end%>
+		</div>
+	</div>
+</div>
+<%end%>
+<% end %>

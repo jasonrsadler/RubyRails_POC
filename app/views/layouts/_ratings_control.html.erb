@@ -1,0 +1,17 @@
+<div class="ratings label">
+	<% if (p.reviews.count == 0) %>
+	This provider has not yet been rated
+	<% else %>
+	<fieldset class="rating">
+		<% (1..5).each do |i|%>
+		<% if p.reviews.average(:rating) >= i %>
+		<label for="star" class="ratingPos"></label>
+		<%else%>
+		<label for="star" class="ratingNeg"></label>
+		<%end%>
+		<% end %>
+		<%= p.reviews.average(:rating) %> (<%= p.reviews.count %> Ratings)
+	</fieldset>
+
+	<%end%>
+</div>

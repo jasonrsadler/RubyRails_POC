@@ -1,0 +1,35 @@
+<% if @provider.status == 2 %>
+
+	<% if client_signed_in? %>
+		<% if current_client.fund == nil %>			
+			<%= link_to new_fund_path do %>
+			<div class="gridLinkSchedBox gridLinkBox">
+				Talk Now!
+			</div>
+			<%end%>
+		<%elsif current_client.fund != nil && current_client.fund.avail_amount != nil && current_client.fund.avail_amount < 10 %>
+			<%= link_to edit_fund_path do %>
+			<div class="gridLinkSchedBox gridLinkBox">
+				Talk Now!
+			</div>
+			<%end%>
+		<%else%>
+			<%= link_to session_options_path(provider_id: @provider.id) do %>
+			<div class="gridLinkSchedBox gridLinkBox">
+				Talk Now!
+			</div>
+			<%end%>
+			
+		<%end%>
+	<% else%>
+		<%= link_to new_client_session_path do %>
+		<div class="gridLinkSchedBox gridLinkBox">
+			Talk Now!
+		</div>
+		<%end%>
+	<%end%>
+<%elsif @provider.status == 1 || @provider.status == 3 %>
+<div class="gridLinkSchedBox gridLinkBox">
+	Email This Provider
+</div>
+<%end%>

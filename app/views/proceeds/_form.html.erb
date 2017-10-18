@@ -1,0 +1,25 @@
+<%= form_for(@proceed) do |f| %>
+  <% if @proceed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proceed.errors.count, "error") %> prohibited this proceed from being saved:</h2>
+
+      <ul>
+      <% @proceed.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :provider_id %><br>
+    <%= f.text_field :provider_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

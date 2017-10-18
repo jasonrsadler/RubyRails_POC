@@ -1,0 +1,81 @@
+<div class="providerInfoSingle">
+	<div>
+		<div class="column1">
+			<div class="providerProfilePhoto">
+				<% if @provider.profile_image.blank? %>
+				<%= image_tag('no_photo_user.png', size: "150x200", class: 'providerFullImage')%>
+				<%else%>
+				<%= image_tag url_for(action: :show_profile_image, id: @provider.id,
+				:controller => :providers), size: "150x200", class: 'providerFullImage'%>
+				<%end%>
+			</div>
+			<div class="providerSchedAppt">
+				<div class="statusBox">
+					<% if @provider.status == 2 %>
+					Available Now!
+					<%elsif @provider.status == 3 %>
+					Unavailable
+					<%elsif @provider.status == 1%>
+					Offline
+					<%end%>
+				</div>
+				<%= render partial: 'layouts/check_provider_status/check_provider_status' %>
+			</div>
+		</div>
+		<div class="column2">
+			<div class="providerProfileInfo label">
+				<div>
+					<%= simple_format(@provider.summary) %>
+				</div>
+				<div class="providerPostInfo label">
+					<div class="avail_singl avail">
+						<%= render partial: 'layouts/avail_control', locals: {p: @provider}%>
+					</div>
+					<div class="providerRate">
+						<%= render partial: 'layouts/rate_view', locals: {p: @provider}%>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div style="clear:both">
+			<p>
+				<%= link_to 'Back To Providers', providers_path%>
+			</p>
+		</div>
+		<div class="commentSection">
+			<% @provider.reviews.each do |review| %>
+			<div class="providerRow">
+				<div class="providerHeaderRow">
+					<div>
+						<h3 class="gridLabel">Reviewer: <%= review.client.first_name + " " + review.client.last_name%></h3>
+					</div>
+				</div>
+				<div class="commentInfoRow label">
+					<div class="commentHeaderRow">
+						<%= render partial: '/layouts/single_rating_control', locals: {review: review} %>
+
+						<div class="commentHeader">
+							<% if !review.heading.blank? %>
+							"<%= review.heading %>"
+							<%else%>&nbsp;
+							<%end%>
+						</div>
+					</div>
+					<div class="floatClear"></div>
+					<div class="reviewPortion">
+						<%= review.review %>
+					</div>
+
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<%end%>
+
+		</div>
+
+	</div>
+</div>
+

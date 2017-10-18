@@ -1,0 +1,28 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Fund Payments</h1>
+	</div>
+	<% @payments.each do |payment| %>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= link_to payment do %>
+			<div class="paymentButton">
+				Payment Details
+			</div>
+			<%end%>
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">			
+			<%= number_to_currency(payment.amount) %> payment made on <%= payment.created_at.in_time_zone('EST').to_formatted_s(:long_ordinal_meridian) %> EST
+		</div>
+	</div>
+	<% end %>
+	<%= will_paginate @payments%>
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv">
+
+		</div>
+	</div>
+	<%= link_to "Back To Funds", funds_path%>
+
+</div>
+

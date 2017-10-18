@@ -1,0 +1,33 @@
+<div class="label">
+
+		<div>
+			Available By:
+		</div>
+		<% if !p.service_by_phone? && !p.service_by_chat? && !p.service_by_email? %>
+		<div>
+			Provider is not yet available
+		</div>
+		<%else%>
+		<% if p.service_by_phone? %>
+		<div>
+			<div class="serviceBox">
+				Phone
+			</div>
+		</div>
+		<%end%>
+		<% if p.service_by_chat? %>
+		<div class="padChatBox">
+			<div class="serviceBox">
+				Chat
+			</div>
+		</div>
+		<%end%>
+		<% if p.service_by_email? %>
+		<div class="padEmailBox">
+			<div class="serviceBox">
+				Email
+			</div>
+		</div>
+		<%end%>
+		<%end%>
+	</div>

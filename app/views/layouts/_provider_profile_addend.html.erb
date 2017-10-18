@@ -1,0 +1,83 @@
+<div>
+	<br />
+	<h2 class="label">Profile Information</h2>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :summary, "Summary Of Services Offered:", { class: 'label'} %>
+	</div>
+	<div class="signUpMemoDiv">
+		<%= f.text_area :summary, {cols: 40, rows: 30, class: 'memo_text_field'} %>
+	</div>
+	<div class="label">
+		This is what will appear on search results to clients
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :profile_img, "Provide A Photo:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.file_field :profile_img, {:data => { :max_file_size => 2.megabytes }, accept: 'image/png,image/gif,image/jpeg',class: 'text_field'} %>
+	</div>
+</div>
+<% if !@provider.profile_image.blank? %>
+
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= label_tag "", "Current Profile Photo:", class: 'label'%>
+	</div>
+	<div class="signUpInputDiv">
+		<%= image_tag url_for(action: :show_profile_image, :id => @provider.id, :controller => :providers), size: "150x225" %>
+	</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<%end%>
+<div>
+	<br/>
+	<h2 class="label">Service Methods Offered</h2>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpInputDiv">
+		<%= f.check_box :service_by_phone, {class: 'check_box'}  %>
+		<%= f.label :service_by_phone, "Phone", {class: 'check_box_label label'}%>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpInputDiv">
+		<%= f.check_box :service_by_chat, {class: 'check_box'}  %>
+		<%= f.label :service_by_chat, "Chat", {class: 'check_box_label label'}%>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpInputDiv">
+		<%= f.check_box :service_by_email, {class: 'check_box'}  %>
+		<%= f.label :service_by_email, "Email", {class: 'check_box_label label'}%>
+	</div>
+</div>
+<div>
+	<h2 class="label">Payment Information</h2>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :rate, "Charging Rate (US Dollars):", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :rate, {value: number_with_precision(f.object.rate, precision: 2), class: 'text_field', step: 0.01}%>
+	</div>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :unit, "Per:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.select :unit, options_for_select(['Hour', 'Minute', 'Session'], @provider.unit), {include_blank: 'Not Selected'}, {class: 'combo_box' }%>
+	</div>
+</div>

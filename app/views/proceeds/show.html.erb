@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @proceed.provider %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @proceed.amount %>
+</p>
+
+<%= link_to 'Edit', edit_proceed_path(@proceed) %> |
+<%= link_to 'Back', proceeds_path %>

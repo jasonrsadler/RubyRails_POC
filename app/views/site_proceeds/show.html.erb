@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @site_proceed.client %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @site_proceed.provider %>
+</p>
+
+<p>
+  <strong>Counseling session:</strong>
+  <%= @site_proceed.counseling_session %>
+</p>
+
+<p>
+  <strong>Total session amount:</strong>
+  <%= @site_proceed.total_session_amount %>
+</p>
+
+<p>
+  <strong>Provider amount:</strong>
+  <%= @site_proceed.provider_amount %>
+</p>
+
+<p>
+  <strong>Commission amount:</strong>
+  <%= @site_proceed.commission_amount %>
+</p>
+
+<p>
+  <strong>Commission percentage:</strong>
+  <%= @site_proceed.commission_percentage %>
+</p>
+
+<%= link_to 'Edit', edit_site_proceed_path(@site_proceed) %> |
+<%= link_to 'Back', site_proceeds_path %>

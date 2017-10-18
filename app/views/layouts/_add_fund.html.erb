@@ -1,0 +1,34 @@
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :amount, "*Amount To Fund:", {class: 'label'} %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :amount, {class: 'text_field', autofocus: true, autocomplete: "off"} %>
+	</div>
+</div>
+
+<%= f.hidden_field :stripe_card_token %>
+
+<% if !@fund.new_record?%>
+<div class="signUpBlockDiv">
+	<div class="radioDiv">
+		<%= f.radio_button :method_of_payment, 'update', {class: 'radio', autocomplete: 'off', id: 'c2', onchange: 'switchSelector(this)'}%>
+		<label for="c2"><span></span></label>
+	</div>
+	<div class="signUpInputDiv signUpLabelDiv label">
+		Pay with a previously used card
+	</div>
+	<div class="signUpInputDiv" id="use_previous">
+		<%= f.select :prev, options_for_select(@cards.all.map {|c| [c.brand + " ********" + c.last4, c.id]}),{}, {class: 'combo_box'} %>
+	</div>
+</div>
+<%end%>
+<%= render partial: '/layouts/cards/cards_entry', locals: {f: f}%>
+
+<div class="signUpBlockDiv">
+	<div class="signButtonDiv">
+		<%= f.submit "Pay Now", {  class: 'submit' } %>
+	</div>
+</div>
+<%= label_tag f.object.avail_amount %>
+<%= label_tag current_client.email%>

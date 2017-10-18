@@ -1,0 +1,38 @@
+<% if resource.new_record? %>
+<div class="signUpBlockDiv">
+	<div class="signButtonDiv">
+		<%= f.submit "Sign up", { class: 'submit' } %>
+	</div>
+</div>
+<% else %>
+<div>
+	<br/>
+	<h2 class="label">Confirm Changes and Update</h2>
+</div>
+<% if @provider %>
+<div class="signUpBlockDiv">
+	<div class="signUpInputDiv">
+		<%= f.check_box :public, {class: 'check_box'}  %>		
+		<%= f.label :public, "Make this profile public to search results and allow clients to request information for sceduling appointments", {class: 'check_box_label label'}%>
+	</div>
+</div>
+<%end%>
+<div class="signUpBlockDiv">
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv">
+			<%= f.label :current_password, "*Current Password:", {class: 'label'} %>
+		</div>
+		<div class="signUpInputDiv">
+
+			<%= f.password_field :current_password, {autocomplete: "off", class: 'text_field'} %>
+
+		</div>
+		<div class="label">
+			(We need your current password to confirm your changes)
+		</div>
+	</div>
+	<div class="signButtonDiv">
+		<%= f.submit "Update", {class: 'submit'} %>
+	</div>
+</div>
+<%end%>

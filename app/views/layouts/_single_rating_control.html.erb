@@ -1,0 +1,9 @@
+<fieldset class="rating">
+	<% (1..5).each do |i|%>
+	<% if review.rating >= i %>
+	<label for="star" class="ratingPos"></label>
+	<%else%>
+	<label for="star" class="ratingNeg"></label>
+	<%end%>
+	<% end %>
+</fieldset>

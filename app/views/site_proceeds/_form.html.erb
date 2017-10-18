@@ -1,0 +1,45 @@
+<%= form_for(@site_proceed) do |f| %>
+  <% if @site_proceed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_proceed.errors.count, "error") %> prohibited this site_proceed from being saved:</h2>
+
+      <ul>
+      <% @site_proceed.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :client_id %><br>
+    <%= f.text_field :client_id %>
+  </div>
+  <div class="field">
+    <%= f.label :provider_id %><br>
+    <%= f.text_field :provider_id %>
+  </div>
+  <div class="field">
+    <%= f.label :counseling_session_id %><br>
+    <%= f.text_field :counseling_session_id %>
+  </div>
+  <div class="field">
+    <%= f.label :total_session_amount %><br>
+    <%= f.text_field :total_session_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :provider_amount %><br>
+    <%= f.text_field :provider_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :commission_amount %><br>
+    <%= f.text_field :commission_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :commission_percentage %><br>
+    <%= f.text_field :commission_percentage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

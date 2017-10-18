@@ -1,0 +1,24 @@
+<div class="signUpBlockDiv">
+	<div class="signUpInputDiv">
+		<%= f.check_box :terms_of_service, {class: 'check_box'}  %>
+		<% if resource_name == "provider" %>
+		
+			<%else%>
+			<%= f.label :terms_of_service, "*Checking this box indicates that you have read and agree to the #{resource_name.capitalize} Terms of Service and Privacy Policy", {class: 'check_box_label label'}%>
+		<%end%>
+	</div>
+</div>
+<div class="signUpInputDiv">
+	<h2 class="label">Human Verification</h2>
+	<br/>
+</div>
+
+<div class="signUpBlockDiv">
+	<div class="signUpLabelDiv">
+		<%= f.label :humanizer_answer, "*" + resource.humanizer_question, {class: 'label' } %>
+	</div>
+	<div class="signUpInputDiv">
+		<%= f.text_field :humanizer_answer, class: 'text_field'%>
+		<%= f.hidden_field :humanizer_question_id %>
+	</div>
+</div>

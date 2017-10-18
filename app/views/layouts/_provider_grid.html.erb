@@ -1,0 +1,60 @@
+<div class="label">
+	<%= form_tag providers_path, method: 'get' %>
+	Sort By: <%= select_tag(:sort_by, options_for_select(['Highest Rating','Lowest Rate', 'Available By Phone', 'Available By Chat', 'Available By Email'], params[:sort_by]), onchange: 'this.form.submit()',  class: 'combo_box') %>
+	<%= link_to "Advanced Search"%>
+</div>
+<div class="providerGrid">
+	<% @providers.each do |p| %>
+	<div class="providerRow">
+		<div class="providerHeaderRow">
+			<div>
+				<h3 class="gridLabel"><%= link_to (p.first_name + " " + p.last_name), provider_path(p) %></h3>
+			</div>
+		</div>
+		<div class="providerInfoRow">
+			<div class="providerImage">
+				<% if p.profile_image.blank? %>
+				<%= link_to image_tag('no_photo_user.png', size: "75x100"), provider_path(p)%>
+				<%else%>
+				<%= link_to image_tag(url_for(action: :show_profile_image, id: p.id,
+				controller: :providers), size: "75x100", alt: ""), provider_path(p) %>
+				<%end%>
+
+			</div>
+			<div class="providerInfo">
+				<div class="summaryBox label">
+					<% if p.summary.blank? %>
+					Summary has not yet been submitted for this provider.
+					<%else%>
+					<% if p.summary.to_s.length > 255%>
+					<%= p.summary[0..255] %>...
+					<%else%>
+					<%= p.summary %>
+					<%end%>
+					<%end%>
+
+				</div>
+				<div class="infoBox">
+					<%= render partial: 'layouts/ratings_control', locals: {p: p}%>
+					<div class="avail">
+						<%= render partial: 'layouts/avail_control', locals: {p: p}%>
+					</div>
+				</div>
+			</div>
+			<div class="rate">
+				<div>
+					<%= link_to provider_path(p) do %>
+					<div class="gridLinkBox">
+						View Provider
+					</div>
+					<%end%>
+				</div>
+				<div class="padToLinkBox">
+					<%= render partial: 'layouts/rate_view', locals: {p: p}%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%end%>
+	<%= will_paginate @providers%>
+</div>

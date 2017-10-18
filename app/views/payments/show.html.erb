@@ -1,0 +1,52 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Payment Details</h1>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Charge:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= number_to_currency(@charge.amount.to_d / 100) %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Card Type:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @charge.card.brand %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Card Ending In:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			******<%= @charge.card.last4 %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Description:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= @charge.description %>
+		</div>
+	</div>
+	<div class="signUpBlockDiv">
+		<div class="signUpLabelDiv label">			
+			Created:
+		</div>
+		<div class="signUpInputDiv signUpLabelDiv label">
+			<%= Time.at(@charge.created).to_datetime.in_time_zone('EST').to_formatted_s(:long_ordinal_meridian) %> EST
+		</div>
+	</div>
+	<!--
+	<div class="signUpBlockDiv">
+		<div class="signUpInputDiv signUpLabelDiv label">
+		<%= link_to "Didn't make this charge?"%>	
+		</div>
+	</div>
+	-->
+</div>

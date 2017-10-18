@@ -1,0 +1,37 @@
+<h1>Listing site_proceeds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Provider</th>
+      <th>Counseling session</th>
+      <th>Total session amount</th>
+      <th>Provider amount</th>
+      <th>Commission amount</th>
+      <th>Commission percentage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_proceeds.each do |site_proceed| %>
+      <tr>
+        <td><%= site_proceed.client %></td>
+        <td><%= site_proceed.provider %></td>
+        <td><%= site_proceed.counseling_session %></td>
+        <td><%= site_proceed.total_session_amount %></td>
+        <td><%= site_proceed.provider_amount %></td>
+        <td><%= site_proceed.commission_amount %></td>
+        <td><%= site_proceed.commission_percentage %></td>
+        <td><%= link_to 'Show', site_proceed %></td>
+        <td><%= link_to 'Edit', edit_site_proceed_path(site_proceed) %></td>
+        <td><%= link_to 'Destroy', site_proceed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site proceed', new_site_proceed_path %>

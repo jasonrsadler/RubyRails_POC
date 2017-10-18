@@ -1,0 +1,150 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+Stripe.setPublishableKey('<%= ENV['PUBLISHABLE_KEY'] %>');
+var selector;
+	function switchSelector(control)
+	{
+		selector = control.id == "c2" ? 0 : 1;
+		if (selector == 1)
+		 {
+		 	document.getElementById('use_previous').style.display = 'none';
+		 	document.getElementById('use_new').style.display= 'block';
+		 }
+		 else
+		 {
+		 	document.getElementById('use_previous').style.display = 'block';
+		 	document.getElementById('use_new').style.display= 'none';
+		 }
+	}
+$(document).ready(function() { 
+	
+	function addInputNames() {
+		$(".card_number").attr("name", "card_number")
+		$(".card_code").attr("name", "card_code")
+		$(".card_month").attr("name", "card_month")
+		$(".card_year").attr("name", "card_year")
+	}
+
+	function removeInputNames() {
+		$(".card_number").removeAttr("name")
+		$(".card_code").removeAttr("name")
+		$(".card_month").removeAttr("name")
+		$(".card_year").removeAttr("name")
+	}
+	function submit(form) {
+		if (selector == null || selector == 1)
+		{
+			removeInputNames();
+			$(form['commit']).attr("disabled", "disabled")
+			Stripe.createToken(
+				{
+					number : $('#card_number').val(),
+					cvc : $('#card_code').val(),
+					exp_month : $('#card_month').val(),
+					exp_year : $('#card_year').val()
+				}, function(status, response) {
+					if (response.error) {
+						$(form['commit']).removeAttr("disabled")
+						$(".payment-errors").html(response.error.message);
+			
+						addInputNames();
+					} 
+					else {
+						var token = response['id'];	
+						$("#fund_stripe_card_token").val(token);
+			
+						form.submit();
+					}
+				});
+			return false;
+		}
+		else
+		{
+			$(form['commit']).attr("disabled", "disabled")
+			var cValue = document.getElementById("#ticket_category_clone").options[e.selectedIndex].value;
+        	Stripe.createToken(
+				{
+					//TODO: rearrange these params
+					card: cValue
+				}, function(status, response) {
+					if (response.error) {
+						$(form['commit']).removeAttr("disabled")
+						$(".payment-errors").html(response.error.message);
+			
+						addInputNames();
+					} 
+					else {
+						var token = response['id'];	
+						$("#fund_stripe_card_token").val(token);
+			
+						form.submit();
+					}
+				});
+			return false;
+		}
+	}
+
+	jQuery.validator.addMethod("cardNumber", Stripe.validateCardNumber, "Please enter a valid card number");
+	jQuery.validator.addMethod("cardCVC", Stripe.validateCVC, "Please enter a valid security code");
+	jQuery.validator.addMethod("cardExpiry", function() {
+		return Stripe.validateExpiry($(".card_month").val(), $(".card_year").val())
+		}, "Please enter a valid expiration");
+	
+	
+	<% if !@fund.new_record? %>
+		$(".edit_fund").validate({
+			submitHandler : submit,
+			rules : {			
+			}
+			
+			});		
+	<%end%>
+	
+<% if @fund.new_record? %>
+jQuery.validator.addMethod("cardNumber", Stripe.validateCardNumber, "Please enter a valid card number");
+	jQuery.validator.addMethod("cardCVC", Stripe.validateCVC, "Please enter a valid security code");
+	jQuery.validator.addMethod("cardExpiry", function() {
+		return Stripe.validateExpiry($(".card_month").val(), $(".card_year").val())
+		}, "Please enter a valid expiration");
+		
+	$(".new_fund").validate({
+		
+		submitHandler : submit,
+		rules : {
+			"card_code" : {
+				cardCVC : true,
+				required : true
+			},
+			"card_number" : {
+				cardNumber : true,
+				required : true
+			},
+			"card_year" : "cardExpiry" 
+		}
+		
+	});
+	
+	addInputNames();
+	
+	<%end%>
+	 selector = document.getElementById('c1').checked ? 1 : 2;
+	 if (selector == 1)
+	 {
+	 	document.getElementById('use_previous').style.display = 'none';
+	 	document.getElementById('use_new').style.display= 'block';
+	 }
+	 else if (selector == 0)
+	 {
+	 	document.getElementById('use_previous').style.display = 'block';
+	 	document.getElementById('use_new').style.display= 'none';
+	 }
+	 else
+	 {
+	 	document.getElementById('use_previous').style.display = 'none';
+	 	document.getElementById('use_new').style.display= 'none';
+	 }
+});
+
+</script>

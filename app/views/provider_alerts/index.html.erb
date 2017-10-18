@@ -1,0 +1,45 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Provider Alerts</h1>
+	</div>
+	<div class="mainContentPrepare">
+		<div class="alertBox">
+			<div class="alertContent">
+
+				<% @provider_alerts.each_with_index do |alert, index| %>
+				<% if index % 2 == 0 %>
+					<% if alert.answered %>
+					<div class='talkBoxRowStyle1 label'>
+					<%else%>
+					<div class='talkBoxRowStyle1 boldLabel'>
+					<%end%>					
+				<%else%>
+					<% if alert.answered %>
+					<div class='talkBoxRowStyle2 label'>
+					<%else%>
+					<div class='talkBoxRowStyle2 boldLabel'>
+					<%end%>
+				<%end%>		
+					<%= link_to alert do%>		
+					<div class="client_by_client_narration">
+						<%= alert.client.first_name + " " + alert.client.last_name %>
+					</div>		
+					<div class="client_by_client_text">
+						<%= alert.alert_subject[0..50] %><% if alert.alert_subject.length > 50 %>...<%end%>
+					</div>
+					<div class="client_by_client_date">
+						<%= alert.created_at.to_formatted_s(:short_inbox) %>
+					</div>
+					<div class="client_by_client_delete">
+						<%= link_to "Delete", provider_alert_path(alert), {data: { confirm: "Delete Alert?" },  method: :delete, class: "submit override" } %>
+
+					</div>
+					<%end%>			
+					
+				</div>
+				<%end%>
+				<%= will_paginate %>
+			</div>
+		</div>
+	</div>
+</div>

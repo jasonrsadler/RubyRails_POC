@@ -1,0 +1,25 @@
+<h1>Listing site_funds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Avail amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_funds.each do |site_fund| %>
+      <tr>
+        <td><%= site_fund.avail_amount %></td>
+        <td><%= link_to 'Show', site_fund %></td>
+        <td><%= link_to 'Edit', edit_site_fund_path(site_fund) %></td>
+        <td><%= link_to 'Destroy', site_fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site fund', new_site_fund_path %>

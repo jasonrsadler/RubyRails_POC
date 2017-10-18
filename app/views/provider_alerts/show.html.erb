@@ -1,0 +1,29 @@
+<div class="mainContent">
+	<div class="signUpBlockDiv">
+		<h1 class="label">Alert From <%= @provider_alert.client.first_name %> <%= @provider_alert.client.last_name%></h1>
+	</div>
+	<div class="mainContentPrepare">
+		<div class="alertBox">
+			<div class="alertSubject"><%= @provider_alert.alert_subject %>.</div>
+			<div class="alertText"><%= @provider_alert.alert_text %></div>
+			<% if @provider_alert.counseling_session.session_type == 1 %>
+			<div class="accept">
+				<% if @provider_alert.alert_type == 1 %>
+					<%= link_to new_counseling_session_path(provider_id: current_provider.id, session_type: 1, id: @provider_alert.counseling_session.id) do %>
+					<div class="gridLinkSchedBox gridLinkBox">
+					Join Chat Session
+					</div>
+					<%end%>
+				<% elsif @provider_alert.alert_type == 2 %>
+					<%= link_to end_session_path(counseling_session_id: @provider_alert.counseling_session.id), method: :post do %>
+					<div class="gridLinkSchedBox gridLinkBox">
+					Submit Charges
+					</div>
+					<%end%>
+				<%end%> 
+			</div>
+			<%end%>
+		</div>
+	</div>
+	<%= link_to 'Delete Alert', provider_alert_path, method: :delete, data: {confirm: "Delete This Alert?"} %>
+</div>

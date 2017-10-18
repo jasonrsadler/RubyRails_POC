@@ -1,0 +1,10 @@
+<% if @provider.service_by_chat %>
+Provider is available by chat
+<%= link_to "Start Session", new_counseling_session_path(provider_id: @provider.id, session_type: 1) %>
+<%end%>
+<% if @provider.service_by_phone %>
+Provider is available by phone 
+<%end%>
+<% if @provider.service_by_email %>
+Provider is available by email
+<%end%>

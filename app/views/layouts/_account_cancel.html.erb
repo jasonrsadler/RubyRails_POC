@@ -1,0 +1,11 @@
+<div>
+	<br/>
+	<h2 class="label">Close Account</h2>
+</div>
+<div class="signUpBlockDiv">
+	<div class="signButtonDiv">
+
+		<%= button_to "Cancel my account", registration_path(resource_name), {data: { confirm: "This action is not reversible.\nClosing your account completely removes your profile and all associated information from our systems.\n\nTo continue closing your account, press OK. If you wish to keep your account open, press Cancel." },  method: :delete, class: "submit override" } %>
+
+	</div>
+</div>

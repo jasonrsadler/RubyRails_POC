@@ -1,0 +1,7 @@
+<div class="label rateBox">
+	<% if p.rate.blank? || p.unit.blank? %>
+	This provider has not yet set a rate
+	<%else%>
+	Rate: <%= number_to_currency(p.rate) %> Per <%= p.unit %>
+	<%end%>
+</div>
